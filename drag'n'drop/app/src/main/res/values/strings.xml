@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">drag\'n\'drop</string>
+    <string name="success">SUCCESS!</string>
+    <string name="fail">FAIL!</string>
+    <string name="start">START</string>
+</resources>
