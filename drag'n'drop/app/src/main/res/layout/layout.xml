@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/colorAccent">
 
     <ImageView
         android:id="@+id/img1"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:visibility="visible"
-        app:srcCompat="@drawable/krowa" />
+        app:srcCompat="@drawable/krowa"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/info"
+        android:layout_marginEnd="18dp"
+        android:layout_marginTop="28dp" />
 
     <ImageView
         android:id="@+id/img2"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/img1"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
         app:srcCompat="@drawable/cienkrowy" />
 
     <TextView
@@ -26,6 +30,17 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/start" />
+        android:text="@string/start"
+        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/img1"
+        android:layout_marginBottom="28dp"
+        android:layout_toEndOf="@+id/img2"
+        android:visibility="visible"
+        app:srcCompat="@mipmap/ic_launcher" />
 
 </RelativeLayout>
