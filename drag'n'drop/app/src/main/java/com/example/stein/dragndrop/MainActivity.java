@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    ImageView img1, img2, img3;
+    public ImageView img1, img2, img3,img4;
     TextView info;
 
     @Override
@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         img1 = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
         img3 = (ImageView) findViewById(R.id.img3);
+        img4 = (ImageView) findViewById(R.id.img4);
         info = (TextView) findViewById(R.id.info);
 
         img2.setOnDragListener(
@@ -33,9 +34,8 @@ public class MainActivity extends AppCompatActivity {
                         int action = event.getAction();
                         switch (action){
                             case DragEvent.ACTION_DRAG_ENDED:{
-                                img1.setVisibility(View.VISIBLE);
-                                img3.setVisibility(View.VISIBLE);
-
+//                                img3.setVisibility(View.VISIBLE);
+//                                img1.setVisibility(View.VISIBLE);
                             }
 
                             case DragEvent.ACTION_DRAG_STARTED:{
@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
                                 }
                                 else{
                                     info.setText(R.string.fail);
+                                    img3.setVisibility(View.VISIBLE);
+                                    img1.setVisibility(View.VISIBLE);
                                     return false;
                                 }
 
@@ -65,6 +67,47 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        img4.setOnDragListener(
+                new View.OnDragListener() {
+                    @Override
+                    public boolean onDrag(View v, DragEvent event) {
+                        int action = event.getAction();
+                        switch (action){
+                            case DragEvent.ACTION_DRAG_ENDED:{
+//                                img3.setVisibility(View.VISIBLE);
+//                                img1.setVisibility(View.VISIBLE);
+                            }
+                            case DragEvent.ACTION_DRAG_STARTED:{
+                                return true;
+                            }
+
+                            case DragEvent.ACTION_DROP:{
+                                ClipData.Item item = event.getClipData().getItemAt(0);
+                                String label = new String(item.getText().toString());
+                                if (label.equals("swinia")){
+                                    info.setText(R.string.success);
+                                    return true;
+                                }
+                                else{
+                                    info.setText(R.string.fail);
+                                    img3.setVisibility(View.VISIBLE);
+                                    img1.setVisibility(View.VISIBLE);
+                                    return false;
+                                }
+
+                            }
+                            default:{
+                                break;
+                            }
+                        }
+
+                        return true;
+                    }
+                }
+        );
+
+
+
         img1.setOnTouchListener(
                 new View.OnTouchListener() {
                     @Override
@@ -72,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                         ClipData data = ClipData.newPlainText("zwierze","krowa");
                         View.DragShadowBuilder shadow = new View.DragShadowBuilder(img1);
                         v.startDrag(data, shadow, null, 0);
-                        img1.setVisibility(View.INVISIBLE);
+                        img1.setVisibility(View.GONE);
                         return false;
                     }
                 }
@@ -81,10 +124,10 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
-                        ClipData data = ClipData.newPlainText("zwierze","droid");
+                        ClipData data = ClipData.newPlainText("zwierze","swinia");
                         View.DragShadowBuilder shadow = new View.DragShadowBuilder(img3);
                         v.startDrag(data, shadow, null, 0);
-                        img3.setVisibility(View.INVISIBLE);
+                        img3.setVisibility(View.GONE);
                         return false;
 
                     }

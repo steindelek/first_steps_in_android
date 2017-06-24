@@ -8,39 +8,51 @@
         android:id="@+id/img1"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:adjustViewBounds="false"
+        android:cropToPadding="true"
         android:visibility="visible"
         app:srcCompat="@drawable/krowa"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/info"
-        android:layout_marginEnd="18dp"
-        android:layout_marginTop="28dp" />
+        android:layout_alignStart="@+id/img2"
+        android:layout_marginTop="30dp" />
 
     <ImageView
         android:id="@+id/img2"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:visibility="visible"
-        app:srcCompat="@drawable/cienkrowy" />
+        app:srcCompat="@drawable/cienkrowy"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="26dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/img3"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/swinia"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:layout_alignStart="@+id/img4" />
+
+    <ImageView
+        android:id="@+id/img4"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/img2"
+        android:layout_marginEnd="32dp"
+        android:adjustViewBounds="false"
+        app:srcCompat="@drawable/swinia_tlo" />
 
     <TextView
         android:id="@+id/info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:text="@string/start"
-        android:textAppearance="@style/TextAppearance.AppCompat.Button" />
-
-    <ImageView
-        android:id="@+id/img3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/img1"
-        android:layout_marginBottom="28dp"
-        android:layout_toEndOf="@+id/img2"
-        android:visibility="visible"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
