@@ -17,34 +17,34 @@
         android:id="@+id/img1"
         android:layout_width="120dp"
         android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/img2"
+        android:layout_marginTop="30dp"
         android:adjustViewBounds="false"
         android:cropToPadding="true"
         android:visibility="visible"
-        app:srcCompat="@drawable/krowa"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/img2"
-        android:layout_marginTop="30dp" />
+        app:srcCompat="@drawable/poop" />
 
     <ImageView
         android:id="@+id/img2"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:visibility="visible"
-        app:srcCompat="@drawable/cienkrowy"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="26dp"
+        android:layout_marginStart="35dp"
+        android:visibility="visible"
+        app:srcCompat="@drawable/poop_tlo" />
 
     <ImageView
         android:id="@+id/img3"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:visibility="visible"
-        app:srcCompat="@drawable/swinia"
         android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/img4"
         android:layout_marginTop="30dp"
-        android:layout_alignStart="@+id/img4" />
+        android:visibility="visible"
+        app:srcCompat="@drawable/monstertruck" />
 
     <ImageView
         android:id="@+id/img4"
@@ -54,7 +54,7 @@
         android:layout_alignTop="@+id/img2"
         android:layout_marginEnd="32dp"
         android:adjustViewBounds="false"
-        app:srcCompat="@drawable/swinia_tlo" />
+        app:srcCompat="@drawable/monstertruck_tlo" />
 
     <TextView
         android:id="@+id/info"
@@ -64,15 +64,5 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"/>
-
-    <Button
-        android:id="@+id/button_next_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:onClick="next_level"
-        android:text="@string/next_level"
-        android:visibility="gone" />
 
 </RelativeLayout>

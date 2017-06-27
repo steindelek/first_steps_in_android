@@ -3,4 +3,7 @@
     <string name="success">SUCCESS!</string>
     <string name="fail">FAIL!</string>
     <string name="start">START</string>
+    <string name="help">help</string>
+    <string name="next_level">next level</string>
+    <string name="youwin">You WIN!</string>
 </resources>
