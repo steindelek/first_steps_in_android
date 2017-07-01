@@ -3,6 +3,8 @@ package com.example.stein.dragndrop;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -13,6 +15,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
+import com.squareup.picasso.Picasso;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +39,13 @@ public class MainActivity extends AppCompatActivity {
         final ImageView img2 = (ImageView) findViewById(R.id.img2);
         final ImageView img3 = (ImageView) findViewById(R.id.img3);
         final ImageView img4 = (ImageView) findViewById(R.id.img4);
+
+
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/krowa.png").error(R.drawable.poop).into(img1);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/krowa_tlo.png").error(R.drawable.poop).into(img2);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/swinia.png").error(R.drawable.poop).into(img3);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/swinia_tlo.png").error(R.drawable.poop).into(img4);
+
 
         // surface is an area outside objects img(num)
         SurfaceView back = (SurfaceView) findViewById(R.id.back);

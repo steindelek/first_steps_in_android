@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
@@ -20,17 +21,14 @@
         android:adjustViewBounds="false"
         android:cropToPadding="true"
         android:visibility="visible"
-        app:srcCompat="@drawable/krowa"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/img2"
-        android:layout_marginTop="30dp" />
+        android:layout_alignTop="@+id/img3"
+        android:layout_alignStart="@+id/img2" />
 
     <ImageView
         android:id="@+id/img2"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:visibility="visible"
-        app:srcCompat="@drawable/cienkrowy"
         android:layout_marginStart="35dp"
         android:layout_marginBottom="26dp"
         android:layout_alignParentBottom="true"
@@ -41,9 +39,8 @@
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:visibility="visible"
-        app:srcCompat="@drawable/swinia"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_below="@+id/button_next_level"
         android:layout_alignStart="@+id/img4" />
 
     <ImageView
@@ -53,8 +50,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/img2"
         android:layout_marginEnd="32dp"
-        android:adjustViewBounds="false"
-        app:srcCompat="@drawable/swinia_tlo" />
+        android:adjustViewBounds="false" />
 
     <TextView
         android:id="@+id/info"

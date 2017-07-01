@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class Level_2 extends AppCompatActivity {
 
     // img(odd num) is movable object, img(even num) is goal [img1 -> img2]
@@ -28,6 +30,12 @@ public class Level_2 extends AppCompatActivity {
         final ImageView img2 = (ImageView) findViewById(R.id.img2);
         final ImageView img3 = (ImageView) findViewById(R.id.img3);
         final ImageView img4 = (ImageView) findViewById(R.id.img4);
+
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/monstertruck.png").error(R.drawable.poop).into(img1);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/monstertruck_tlo.png").error(R.drawable.poop).into(img2);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/grzyb.png").error(R.drawable.poop).into(img3);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/grzyb_tlo.png").error(R.drawable.poop).into(img4);
+
 
         // surface is an area outside objects img(num)
         SurfaceView back = (SurfaceView) findViewById(R.id.back);

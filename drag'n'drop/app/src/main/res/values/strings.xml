@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">drag\'n\'drop</string>
-    <string name="success">SUCCESS!</string>
-    <string name="fail">FAIL!</string>
+    <string name="success">GREAT!</string>
+    <string name="fail">WRONG!</string>
     <string name="start">START</string>
     <string name="help">help</string>
     <string name="next_level">next level</string>
     <string name="youwin">You WIN!</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
