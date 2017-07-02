@@ -6,6 +6,8 @@
     <string name="help">help</string>
     <string name="next_level">next level</string>
     <string name="youwin">You WIN!</string>
+    <string name="close">CLOSE</string>
+    <string name="text_help">help text gonna fill later! :P </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

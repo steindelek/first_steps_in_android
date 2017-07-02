@@ -1,30 +1,18 @@
 package com.example.stein.dragndrop;
 
 import android.content.ClipData;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-
-public class MainActivity extends AppCompatActivity {
+public class game extends AppCompatActivity {
 
     // img(odd num) is movable object, img(even num) is goal [img1 -> img2]
     // surface is an area outside objects img(num)
@@ -32,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout);
+        setContentView(R.layout.game);
 
         // img(odd num) is movable object, img(even num) is goal [img1 -> img2]
         final ImageView img1 = (ImageView) findViewById(R.id.img1);
@@ -40,17 +28,15 @@ public class MainActivity extends AppCompatActivity {
         final ImageView img3 = (ImageView) findViewById(R.id.img3);
         final ImageView img4 = (ImageView) findViewById(R.id.img4);
 
-
-        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/krowa.png").error(R.drawable.poop).into(img1);
-        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/krowa_tlo.png").error(R.drawable.poop).into(img2);
-        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/swinia.png").error(R.drawable.poop).into(img3);
-        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/swinia_tlo.png").error(R.drawable.poop).into(img4);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/monstertruck.png").error(R.drawable.poop).into(img1);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/monstertruck_tlo.png").error(R.drawable.poop).into(img2);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/grzyb.png").error(R.drawable.poop).into(img3);
+        Picasso.with(this).load("http://serwer1704039.home.pl/android/fitemall/grzyb_tlo.png").error(R.drawable.poop).into(img4);
 
 
         // surface is an area outside objects img(num)
         SurfaceView back = (SurfaceView) findViewById(R.id.back);
         final TextView info = (TextView) findViewById(R.id.info);
-        final Button button_next_level = (Button) findViewById(R.id.button_next_level);
 
         back.setOnDragListener(
                 new View.OnDragListener() {
@@ -102,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
                                     img3.setVisibility(View.VISIBLE);
                                     ret = false;
                                 }
-                                check_score(img1, img3, button_next_level);
+                                check_win(img1, img3, info);
                                 return ret;
 
                             }
@@ -141,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
                                     img1.setVisibility(View.VISIBLE);
                                     ret = false;
                                 }
-                                check_score(img1, img3, button_next_level);
+                                check_win(img1, img3, info);
                                 return ret;
 
                             }
@@ -183,14 +169,11 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
     }
-    public void next_level(View view) {
-        Intent next = new Intent(this, game.class);
-        startActivity(next);
-    }
 
-    public void check_score(ImageView img1, ImageView img2, Button button){
+    public void check_win(ImageView img1, ImageView img2, TextView info){
         if(img1.getVisibility() == View.GONE && img2.getVisibility() == View.GONE){
-            button.setVisibility(View.VISIBLE);
+            info.setText(R.string.youwin);
+            info.setTextSize(50);
         }
     }
 }
