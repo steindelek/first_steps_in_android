@@ -5,61 +5,12 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/colorAccent">
 
-    <SurfaceView
-        android:id="@+id/back"
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.stein.dragndrop.GameFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/colorAccent"
-        android:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/img1"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/img2"
-        android:layout_marginTop="60dp"
-        android:adjustViewBounds="false"
-        android:cropToPadding="true"
-        android:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/img2"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="26dp"
-        android:layout_marginStart="35dp"
-        android:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/img3"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/img4"
-        android:layout_marginTop="60dp"
-        android:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/img4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/img2"
-        android:layout_marginEnd="32dp"
-        android:adjustViewBounds="false" />
-
-    <TextView
-        android:id="@+id/info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/start"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"/>
-
+        tools:layout="@layout/game_fragment" />
 </RelativeLayout>
