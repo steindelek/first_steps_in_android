@@ -23,6 +23,7 @@ import android.widget.TextView;
 import java.io.IOException;
 import java.security.acl.Group;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -32,7 +33,6 @@ public class game extends AppCompatActivity {
 
     public ImageView o1, o2, o3, o4, o5, o6, d1, d2, d3, d4, d5, d6; // objects "o" and their destinations "d".
     private List<Integer> list = new ArrayList<>();
-
     public Random generator = new Random();
 
     @Override
@@ -41,7 +41,7 @@ public class game extends AppCompatActivity {
         setContentView(R.layout.game_fragment);
 
         SurfaceView back = (SurfaceView)findViewById(R.id.surface);
-        back.setBackgroundColor(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
+        back.setBackgroundColor(Color.argb(255,generator.nextInt(100)+150,generator.nextInt(100)+150,generator.nextInt(100)+150));
 
         final MediaPlayer sound_StartDrag = MediaPlayer.create(this, R.raw.drag_start);
         final MediaPlayer sound_DropWrong = MediaPlayer.create(this, R.raw.drop_wrong);
@@ -354,19 +354,47 @@ public class game extends AppCompatActivity {
 
     public void draw_object_position(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6, ImageView d1, ImageView d2, ImageView d3, ImageView d4, ImageView d5, ImageView d6){
 
-        o1.setImageResource(R.drawable.chick);
-        o2.setImageResource(R.drawable.bull);
-        o3.setImageResource(R.drawable.crab);
-        o4.setImageResource(R.drawable.fox);
-        o5.setImageResource(R.drawable.hedgehog);
-        o6.setImageResource(R.drawable.hippopotamus);
+        List<Integer> pngs = new ArrayList<>();
 
-        d1.setImageResource(R.drawable.chick);
-        d2.setImageResource(R.drawable.bull);
-        d3.setImageResource(R.drawable.crab);
-        d4.setImageResource(R.drawable.fox);
-        d5.setImageResource(R.drawable.hedgehog);
-        d6.setImageResource(R.drawable.hippopotamus);
+        pngs.add(R.drawable.bull);
+        pngs.add(R.drawable.chick);
+        pngs.add(R.drawable.crab);
+        pngs.add(R.drawable.fox);
+        pngs.add(R.drawable.hedgehog);
+        pngs.add(R.drawable.hippopotamus);
+        pngs.add(R.drawable.koala);
+        pngs.add(R.drawable.lemur);
+        pngs.add(R.drawable.pig);
+        pngs.add(R.drawable.tiger);
+        pngs.add(R.drawable.whale);
+        pngs.add(R.drawable.zebra);
+
+
+        Integer i = generator.nextInt(pngs.size());
+        o1.setImageResource(pngs.get(i));
+        d1.setImageResource(pngs.get(i));
+        pngs.remove(pngs.get(i));              // WHY SIMPLE pngs.remove(i) do not work !?!?
+        i = generator.nextInt(pngs.size());
+        o2.setImageResource(pngs.get(i));
+        d2.setImageResource(pngs.get(i));
+        pngs.remove(pngs.get(i));
+        i = generator.nextInt(pngs.size());
+        o3.setImageResource(pngs.get(i));
+        d3.setImageResource(pngs.get(i));
+        pngs.remove(pngs.get(i));
+        i = generator.nextInt(pngs.size());
+        o4.setImageResource(pngs.get(i));
+        d4.setImageResource(pngs.get(i));
+        pngs.remove(pngs.get(i));
+        i = generator.nextInt(pngs.size());
+        o5.setImageResource(pngs.get(i));
+        d5.setImageResource(pngs.get(i));
+        pngs.remove(pngs.get(i));
+        i = generator.nextInt(pngs.size());
+        o6.setImageResource(pngs.get(i));
+        d6.setImageResource(pngs.get(i));
+
+
 
         d1.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
         d2.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
