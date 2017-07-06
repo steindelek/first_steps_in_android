@@ -50,7 +50,7 @@ public class StartActivity extends AppCompatActivity {
     }
 
     public void game_start(View view){
-        Intent game = new Intent(this, MainActivity.class);
+        Intent game = new Intent(this, game.class);
         startActivity(game);
     }
 }

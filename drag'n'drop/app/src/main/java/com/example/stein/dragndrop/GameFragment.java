@@ -2,6 +2,7 @@ package com.example.stein.dragndrop;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -24,6 +25,7 @@ import java.util.Random;
 
 
 public class GameFragment extends Fragment {
+
 
     private ImageView o1, o2, o3, o4, o5, o6, d1, d2, d3, d4, d5, d6; // objects "o" and their destinations "d".
     private SurfaceView back; //Surface - area outside imageviews.
@@ -300,14 +302,14 @@ public class GameFragment extends Fragment {
                 }
         );
 
-        return view;
+        //return view;
 
-        //return super.onCreateView(inflater, container, savedInstanceState);
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     public void draw_object_position(View view, ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6, ImageView d1, ImageView d2, ImageView d3, ImageView d4, ImageView d5, ImageView d6){
 
-        ArrayList list = new ArrayList();
+        List<Integer> list = new ArrayList<>();
         list.add(1, R.id.object1);
         list.add(2, R.id.object2);
         list.add(3, R.id.object3);
@@ -321,18 +323,18 @@ public class GameFragment extends Fragment {
         list.add(11, R.id.object11);
         list.add(12, R.id.object12);
 
-        o1 = (ImageView) view.findViewById((Integer)list.get(1));
-        o2 = (ImageView) view.findViewById((Integer)list.get(2));
-        o3 = (ImageView) view.findViewById((Integer)list.get(3));
-        o4 = (ImageView) view.findViewById((Integer)list.get(4));
-        o5 = (ImageView) view.findViewById((Integer)list.get(5));
-        o6 = (ImageView) view.findViewById((Integer)list.get(6));
-        d1 = (ImageView) view.findViewById((Integer)list.get(7));
-        d2 = (ImageView) view.findViewById((Integer)list.get(8));
-        d3 = (ImageView) view.findViewById((Integer)list.get(9));
-        d4 = (ImageView) view.findViewById((Integer)list.get(10));
-        d5 = (ImageView) view.findViewById((Integer)list.get(11));
-        d6 = (ImageView) view.findViewById((Integer)list.get(12));
+        o1 = (ImageView) view.findViewById((Integer)list.get(0));
+        o2 = (ImageView) view.findViewById((Integer)list.get(1));
+        o3 = (ImageView) view.findViewById((Integer)list.get(2));
+        o4 = (ImageView) view.findViewById((Integer)list.get(3));
+        o5 = (ImageView) view.findViewById((Integer)list.get(4));
+        o6 = (ImageView) view.findViewById((Integer)list.get(5));
+        d1 = (ImageView) view.findViewById((Integer)list.get(6));
+        d2 = (ImageView) view.findViewById((Integer)list.get(7));
+        d3 = (ImageView) view.findViewById((Integer)list.get(8));
+        d4 = (ImageView) view.findViewById((Integer)list.get(9));
+        d5 = (ImageView) view.findViewById((Integer)list.get(10));
+        d6 = (ImageView) view.findViewById((Integer)list.get(11));
 
         o1.setImageResource(R.drawable.poop);
         o2.setImageResource(R.drawable.zycie);
