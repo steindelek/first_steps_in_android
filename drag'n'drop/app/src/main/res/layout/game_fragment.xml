@@ -18,17 +18,18 @@
         android:id="@+id/object1"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_alignRight="@+id/centre"
+        android:layout_marginRight="70dp"
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="140dp"
         android:visibility="visible" />
 
     <ImageView
         android:id="@+id/object2"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="140dp"
         android:layout_centerHorizontal="true"
         android:visibility="visible" />
 
@@ -36,18 +37,20 @@
         android:id="@+id/object3"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="30dp"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_marginLeft="70dp"
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="140dp"
         android:visibility="visible" />
 
     <ImageView
         android:id="@+id/object4"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="150dp"
+        android:layout_alignRight="@+id/centre"
+        android:layout_marginRight="70dp"
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="20dp"
         android:visibility="visible" />
 
     <ImageView
@@ -55,35 +58,37 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="150dp"
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="20dp"
         android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/object6"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:visibility="visible"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="150dp"/>
+        android:layout_alignBottom="@+id/centre"
+        android:layout_marginBottom="20dp"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_marginLeft="70dp"
+        android:visibility="visible" />
 
     <ImageView
         android:id="@+id/object7"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="20dp"
+        android:layout_alignRight="@+id/centre"
+        android:layout_marginRight="70dp" />
 
     <ImageView
         android:id="@+id/object8"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
     <ImageView
@@ -91,35 +96,93 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_marginLeft="70dp" />
 
     <ImageView
         android:id="@+id/object10"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_alignRight="@+id/centre"
+        android:layout_marginRight="70dp"
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="140dp"/>
 
     <ImageView
         android:id="@+id/object11"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="140dp"/>
 
     <ImageView
         android:id="@+id/object12"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:visibility="visible"
-        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/centre"
+        android:layout_alignTop="@+id/centre"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="70dp"/>
+
+    <ImageView
+        android:id="@+id/centre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+    <TextView
+        android:id="@+id/points"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/life2"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/zycie"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/life1" />
+
+    <ImageView
+        android:id="@+id/life1"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="20dp"/>
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/zycie" />
+
+    <ImageView
+        android:id="@+id/life5"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/life4"
+        app:srcCompat="@drawable/zycie" />
+
+    <ImageView
+        android:id="@+id/life4"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/life3"
+        app:srcCompat="@drawable/zycie" />
+
+    <ImageView
+        android:id="@+id/life3"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:srcCompat="@drawable/zycie"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/life2" />
 
 </RelativeLayout>

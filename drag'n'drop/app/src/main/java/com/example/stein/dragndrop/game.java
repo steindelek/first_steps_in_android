@@ -1,29 +1,20 @@
 package com.example.stein.dragndrop;
 
-import android.app.Activity;
 import android.content.ClipData;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
-
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import java.io.IOException;
-import java.security.acl.Group;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -32,22 +23,41 @@ import java.util.Collections;
 public class game extends AppCompatActivity {
 
     public ImageView o1, o2, o3, o4, o5, o6, d1, d2, d3, d4, d5, d6; // objects "o" and their destinations "d".
+    public ImageView life1, life2, life3, life4, life5;
+    public TextView points;
     private List<Integer> list = new ArrayList<>();
     public Random generator = new Random();
+    public int score, life;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game_fragment);
 
+        Bundle data = getIntent().getExtras();
+        score = data.getInt("score");
+        life = data.getInt("life");
+
         SurfaceView back = (SurfaceView)findViewById(R.id.surface);
         back.setBackgroundColor(Color.argb(255,generator.nextInt(100)+150,generator.nextInt(100)+150,generator.nextInt(100)+150));
+
+        life1 = (ImageView) findViewById(R.id.life1);
+        life2 = (ImageView) findViewById(R.id.life2);
+        life3 = (ImageView) findViewById(R.id.life3);
+        life4 = (ImageView) findViewById(R.id.life4);
+        life5 = (ImageView) findViewById(R.id.life5);
+        set_life();
+
+        points = (TextView) findViewById(R.id.points);
+        points.setText(String.valueOf(score)+" PTS");
+
 
         final MediaPlayer sound_StartDrag = MediaPlayer.create(this, R.raw.drag_start);
         final MediaPlayer sound_DropWrong = MediaPlayer.create(this, R.raw.drop_wrong);
         final MediaPlayer sound_DropRight = MediaPlayer.create(this, R.raw.drop_right);
 
-        //#################################################
+        //################################################# randomize positions ###########
         list.add(R.id.object1);
         list.add(R.id.object2);
         list.add(R.id.object3);
@@ -76,7 +86,7 @@ public class game extends AppCompatActivity {
         d5 = (ImageView) findViewById((Integer)list.get(10));
         d6 = (ImageView) findViewById((Integer)list.get(11));
 
-        draw_object_position(o1, o2, o3, o4, o5, o6, d1, d2, d3, d4, d5, d6);
+        draw_objects(o1, o2, o3, o4, o5, o6, d1, d2, d3, d4, d5, d6);
 
         //####################################################
 
@@ -89,7 +99,7 @@ public class game extends AppCompatActivity {
                             case DragEvent.ACTION_DROP:{
                                 ClipData.Item item = event.getClipData().getItemAt(0);
                                 String label = new String(item.getText().toString());
-                                sound_DropWrong.start();
+                                wrong_drop(sound_DropWrong);
                                 set_back_visability(label, o1, o2, o3, o4, o5, o6);
                             }
                         }
@@ -113,7 +123,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -139,7 +149,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -165,7 +175,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -191,7 +201,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -217,7 +227,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -242,7 +252,7 @@ public class game extends AppCompatActivity {
                                     return true;
                                 }
                                 else{
-                                    sound_DropWrong.start();
+                                    wrong_drop(sound_DropWrong);
                                     set_back_visability(label, o1, o2 ,o3, o4, o5, o6);
                                     return false;
                                 }
@@ -352,7 +362,7 @@ public class game extends AppCompatActivity {
 
     }
 
-    public void draw_object_position(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6, ImageView d1, ImageView d2, ImageView d3, ImageView d4, ImageView d5, ImageView d6){
+    public void draw_objects(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6, ImageView d1, ImageView d2, ImageView d3, ImageView d4, ImageView d5, ImageView d6){
 
         List<Integer> pngs = new ArrayList<>();
 
@@ -426,11 +436,7 @@ public class game extends AppCompatActivity {
     public void check_win(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6){
         if(o1.getVisibility() == View.GONE && o2.getVisibility() == View.GONE && o3.getVisibility() == View.GONE && o4.getVisibility() == View.GONE && o5.getVisibility() == View.GONE && o6.getVisibility() == View.GONE){
 
-
-            Intent game = new Intent(this, StartActivity.class);
-            startActivity(game);
-
-
+            end_level_popup();
             //play win sound
 
 
@@ -440,9 +446,86 @@ public class game extends AppCompatActivity {
 
     public void good_job(ImageView a, MediaPlayer sound){
         a.setColorFilter(0);
+        score+=10;
+        points.setText(String.valueOf(score)+" PTS");
         check_win(o1, o2, o3, o4, o5, o6);
         sound.start();
 
     }
+    public void wrong_drop(MediaPlayer sound_DropWrong){
+        life--;
+        sound_DropWrong.start();
+        set_life();
+    }
+
+    public void end_level_popup() {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        if(life < 1){
+            adb.setTitle(R.string.game_over);
+            adb.setMessage(getText(R.string.great_score) + " " + String.valueOf(score) + " pts");
+
+            adb.setPositiveButton(R.string.Try_again, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    goto_nextlevel(0, 5);
+
+                }
+            });
+
+        }
+        else{
+            adb.setTitle(R.string.score);
+            adb.setMessage(score+" pts");
+
+
+
+            adb.setPositiveButton(R.string.nextlevel, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    goto_nextlevel(score, life);
+
+                    //### akcja  po przyciśnieciu przycisku 1 / przykład zmiana TextViev
+                    //tv.setText("You have clicked ok");
+                }
+            });
+            // ########Przycisk Cancel #########
+            // adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+            // {
+            //  public void onClick(DialogInterface dialog, int id)
+            // ###akcja  po przyciśnieciu przycisku 2 / przykład zmiana TextViev
+            //tv.setText("You have clicked Cancel");
+            //   dialog.cancel();
+            //}});
+        }
+
+        adb.setIcon(R.drawable.koala);    // ikona popup
+        adb.show();
+    }
+
+    public void goto_nextlevel(int score, int life){
+        Intent game = new Intent(this, game.class);
+        game.putExtra("score", score);
+        game.putExtra("life", life);
+        startActivity(game);
+    }
+
+    public void set_life(){
+
+        if(life < 5){
+            life5.setVisibility(View.INVISIBLE);
+        }
+        if(life < 4){
+            life4.setVisibility(View.INVISIBLE);
+        }
+        if(life < 3){
+            life3.setVisibility(View.INVISIBLE);
+        }
+        if(life < 2){
+            life2.setVisibility(View.INVISIBLE);
+        }
+        if(life < 1){
+            life1.setVisibility(View.INVISIBLE);
+            end_level_popup();
+        }
+    }
+
 
 }

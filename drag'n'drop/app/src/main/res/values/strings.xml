@@ -2,10 +2,16 @@
     <string name="app_name">drag\'n\'drop</string>
     <string name="success">GREAT!</string>
     <string name="fail">WRONG!</string>
-    <string name="start">START</string>
+    <string name="start">NEW GAME</string>
     <string name="help">HELP</string>
-    <string name="next_level">next level</string>
     <string name="youwin">You WIN!</string>
     <string name="close">CLOSE</string>
-    <string name="text_help">Drag funny animals into their right place.\n \n Good Luck! </string>
+    <string name="help_text">Drag funny animals into their right place.\n \n Good Luck! </string>
+    <string name="help_title">One simple rule</string>
+    <string name="score">You\'ve got</string>
+    <string name="points">1000 pts</string>
+    <string name="nextlevel">NEXT LEVEL</string>
+    <string name="game_over">GAME OVER</string>
+    <string name="great_score">Great SCORE!</string>
+    <string name="Try_again">Try Again</string>
 </resources>

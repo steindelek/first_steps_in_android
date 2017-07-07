@@ -1,24 +1,18 @@
 package com.example.stein.dragndrop;
 
-import android.app.ActionBar;
-import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewParent;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Gallery;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+
 
 public class StartActivity extends AppCompatActivity {
+
+    public int score = 0;
+    public int life = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,20 +24,7 @@ public class StartActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(LAYOUT_INFLATER_SERVICE);
-                        View popupview = layoutInflater.inflate(R.layout.help_layout, null);
-                        final PopupWindow popupWindow = new PopupWindow(popupview, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT);
-
-                        Button button_close = (Button) popupview.findViewById(R.id.button_close);
-                        button_close.setOnClickListener(
-                                new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        popupWindow.dismiss();
-                                    }
-                                }
-                        );
-                        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                        popup();
                     }
                 }
         );
@@ -51,6 +32,34 @@ public class StartActivity extends AppCompatActivity {
 
     public void game_start(View view){
         Intent game = new Intent(this, game.class);
+        game.putExtra("score", score);
+        game.putExtra("life", life);
         startActivity(game);
+    }
+
+    public void popup() {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        adb.setTitle(R.string.help_title);
+        adb.setMessage(R.string.help_text);
+
+
+        adb.setPositiveButton("Let's roll!", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+
+                //### akcja  po przyciśnieciu przycisku 1 / przykład zmiana TextViev
+                //tv.setText("You have clicked ok");
+            }
+        });
+        // ########Przycisk Cancel #########
+        // adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
+        // {
+        //  public void onClick(DialogInterface dialog, int id)
+        // ###akcja  po przyciśnieciu przycisku 2 / przykład zmiana TextViev
+        //tv.setText("You have clicked Cancel");
+        //   dialog.cancel();
+        //}});
+
+        adb.setIcon(R.drawable.koala);    // ikona popup
+        adb.show();
     }
 }
