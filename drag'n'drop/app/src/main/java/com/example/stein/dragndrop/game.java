@@ -459,6 +459,7 @@ public class game extends AppCompatActivity {
     }
 
     public void end_level_popup() {
+        final Intent rank = new Intent(this, RankingActivity.class);
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         if(life < 1){
             adb.setTitle(R.string.game_over);
@@ -468,6 +469,13 @@ public class game extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int id) {
                     goto_nextlevel(0, 5);
 
+                }
+            });
+
+            adb.setNegativeButton(R.string.save_score, new DialogInterface.OnClickListener(){
+                public void onClick(DialogInterface dialog, int id){
+                    rank.putExtra("score", score);
+                    startActivity(rank);
                 }
             });
 

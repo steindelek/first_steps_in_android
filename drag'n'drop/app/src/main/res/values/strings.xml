@@ -14,4 +14,6 @@
     <string name="game_over">GAME OVER</string>
     <string name="great_score">Great SCORE!</string>
     <string name="Try_again">Try Again</string>
+    <string name="ranking">Ranking</string>
+    <string name="save_score">Save score</string>
 </resources>

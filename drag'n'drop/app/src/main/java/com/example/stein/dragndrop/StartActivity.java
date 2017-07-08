@@ -62,4 +62,11 @@ public class StartActivity extends AppCompatActivity {
         adb.setIcon(R.drawable.koala);    // ikona popup
         adb.show();
     }
+
+    public void goto_ranking(View view){
+        Intent rank = new Intent(this, RankingActivity.class);
+        rank.putExtra("score", score);
+        startActivity(rank);
+
+    }
 }

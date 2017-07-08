@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="match_parent" android:layout_height="match_parent"
-android:background="#52dfff">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:background="#52dfff"
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -10,6 +11,7 @@ android:background="#52dfff">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/logo"
+        android:layout_marginBottom="50dp"
         android:layout_alignBottom="@+id/centre" />
 
     <Button
@@ -20,7 +22,6 @@ android:background="#52dfff">
         android:layout_alignTop="@+id/centre"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/colorAccent"
-        android:elevation="24dp"
         android:onClick="game_start"
         android:text="@string/start" />
 
@@ -30,10 +31,9 @@ android:background="#52dfff">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorAccent"
-        android:elevation="24dp"
         android:text="@string/help"
         android:layout_marginTop="18dp"
-        android:layout_below="@+id/button_start"
+        android:layout_below="@+id/button_ranking"
         android:layout_alignEnd="@+id/button_start"
         android:layout_alignStart="@+id/button_start" />
 
@@ -43,5 +43,17 @@ android:background="#52dfff">
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true" />
+
+    <Button
+        android:id="@+id/button_ranking"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button_start"
+        android:layout_alignStart="@+id/button_start"
+        android:layout_below="@+id/button_start"
+        android:layout_marginTop="18dp"
+        android:onClick="goto_ranking"
+        android:text="@string/ranking" />
 
 </RelativeLayout>

@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".game" android:noHistory="true" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".RankingActivity"></activity>
     </application>
 
 </manifest>
