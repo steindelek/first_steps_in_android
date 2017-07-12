@@ -143,7 +143,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="3dp"/>
 
     <ImageView
         android:id="@+id/life2"
@@ -151,7 +153,9 @@
         android:layout_height="25dp"
         app:srcCompat="@drawable/zycie"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/life1" />
+        android:layout_toStartOf="@+id/life1"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
     <ImageView
         android:id="@+id/life1"
@@ -159,7 +163,9 @@
         android:layout_height="25dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        app:srcCompat="@drawable/zycie" />
+        app:srcCompat="@drawable/zycie"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
     <ImageView
         android:id="@+id/life5"
@@ -167,7 +173,9 @@
         android:layout_height="25dp"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/life4"
-        app:srcCompat="@drawable/zycie" />
+        app:srcCompat="@drawable/zycie"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
     <ImageView
         android:id="@+id/life4"
@@ -175,7 +183,9 @@
         android:layout_height="25dp"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/life3"
-        app:srcCompat="@drawable/zycie" />
+        app:srcCompat="@drawable/zycie"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
     <ImageView
         android:id="@+id/life3"
@@ -183,6 +193,8 @@
         android:layout_height="25dp"
         app:srcCompat="@drawable/zycie"
         android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/life2" />
+        android:layout_toStartOf="@+id/life2"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"/>
 
 </RelativeLayout>

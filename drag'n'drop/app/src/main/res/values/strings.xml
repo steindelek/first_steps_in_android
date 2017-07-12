@@ -16,4 +16,11 @@
     <string name="Try_again">Try Again</string>
     <string name="ranking">Ranking</string>
     <string name="save_score">Save score</string>
+    <string name="keepitup">keep it up!</string>
+    <string name="pts">pts</string>
+    <string name="playername">Player Name</string>
+    <string name="warning">WARNING</string>
+    <string name="is_it_ok_to_erase">You are about to erase all Your data.\nAre You sure?</string>
+    <string name="delete">Yes! Delete all</string>
+    <string name="keep">No! Keep the data</string>
 </resources>

@@ -59,7 +59,7 @@ public class StartActivity extends AppCompatActivity {
         //   dialog.cancel();
         //}});
 
-        adb.setIcon(R.drawable.koala);    // ikona popup
+        adb.setIcon(R.drawable.img92);    // ikona popup
         adb.show();
     }
 

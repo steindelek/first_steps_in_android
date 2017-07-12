@@ -16,6 +16,7 @@ public class DBhandler extends SQLiteOpenHelper {
     public static final String TABLE_RANKING = "ranking";
     public static final String COLUMN_NAME = "name";
     public static final String COLUMN_SCORE = "score";
+    public static final String COLUMN_IMG = "img";
 
 
     public DBhandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
@@ -25,8 +26,9 @@ public class DBhandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_RANKING + "(" +
-                COLUMN_NAME + " TEXT PRIMARY KEY, " +
-                COLUMN_SCORE + " INTEGER " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_SCORE + " INTEGER, " +
+                COLUMN_IMG + " INTEGER " +
                 ");";
         db.execSQL(query);
 
@@ -43,7 +45,8 @@ public class DBhandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, ranking.get_player_name());
-        //values.put(COLUMN_SCORE, ranking.get_score());
+        values.put(COLUMN_SCORE, ranking.get_score());
+        values.put(COLUMN_IMG, ranking.get_img());
 
         SQLiteDatabase db = getWritableDatabase();
 
@@ -58,8 +61,8 @@ public class DBhandler extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + TABLE_RANKING + " WHERE " + COLUMN_NAME + "=\"" + player + "\";");
     }
 
-    public List<String> database_to_string(){
-        List list = new ArrayList<>();
+    public ArrayList<Ranking> database_to_array(){
+        ArrayList<Ranking> players = new ArrayList<Ranking>();
         String DBout = " ";
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_RANKING + " WHERE 1;";
@@ -70,14 +73,13 @@ public class DBhandler extends SQLiteOpenHelper {
         cursor.moveToFirst();
 
         while(!cursor.isAfterLast()){
-            if(cursor.getString(cursor.getColumnIndex("name")) != null){
-                DBout = cursor.getString(cursor.getColumnIndex("name"));
-                list.add(cursor.getString(cursor.getColumnIndex("name")));
+            if(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)) != null){
+                //DBout = cursor.getString(cursor.getColumnIndex("name"));
+                players.add(new Ranking(cursor.getString(cursor.getColumnIndex(COLUMN_NAME)), cursor.getInt(cursor.getColumnIndex(COLUMN_SCORE)), cursor.getInt(cursor.getColumnIndex(COLUMN_IMG))));
                 cursor.moveToNext();
-
             }
         }
         db.close();
-        return list;
+        return players;
     }
 }

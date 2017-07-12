@@ -40,7 +40,7 @@ public class game extends AppCompatActivity {
         life = data.getInt("life");
 
         SurfaceView back = (SurfaceView)findViewById(R.id.surface);
-        back.setBackgroundColor(Color.argb(255,generator.nextInt(100)+150,generator.nextInt(100)+150,generator.nextInt(100)+150));
+        back.setBackgroundColor(Color.argb(255,generator.nextInt(80)+175,generator.nextInt(80)+175,generator.nextInt(80)+175));
 
         life1 = (ImageView) findViewById(R.id.life1);
         life2 = (ImageView) findViewById(R.id.life2);
@@ -351,43 +351,23 @@ public class game extends AppCompatActivity {
                 }
         );
 
-
-
-
-        //####################################################
-
-
-
-
-
     }
+
+    //####################################################
+
 
     public void draw_objects(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6, ImageView d1, ImageView d2, ImageView d3, ImageView d4, ImageView d5, ImageView d6){
 
-        List<Integer> pngs = new ArrayList<>();
+        List<Integer> pngs = make_list_of_images(); //List of addresses of all images in resources
 
-        pngs.add(R.drawable.bull);
-        pngs.add(R.drawable.chick);
-        pngs.add(R.drawable.crab);
-        pngs.add(R.drawable.fox);
-        pngs.add(R.drawable.hedgehog);
-        pngs.add(R.drawable.hippopotamus);
-        pngs.add(R.drawable.koala);
-        pngs.add(R.drawable.lemur);
-        pngs.add(R.drawable.pig);
-        pngs.add(R.drawable.tiger);
-        pngs.add(R.drawable.whale);
-        pngs.add(R.drawable.zebra);
-
-
-        Integer i = generator.nextInt(pngs.size());
-        o1.setImageResource(pngs.get(i));
+        Integer i = generator.nextInt(pngs.size());  // generate random image
+        o1.setImageResource(pngs.get(i));            //set drawn image
         d1.setImageResource(pngs.get(i));
-        pngs.remove(pngs.get(i));              // WHY SIMPLE pngs.remove(i) do not work !?!?
+        pngs.remove(pngs.get(i));              // and remove it from List
         i = generator.nextInt(pngs.size());
         o2.setImageResource(pngs.get(i));
         d2.setImageResource(pngs.get(i));
-        pngs.remove(pngs.get(i));
+        pngs.remove(pngs.get(i));               // WHY SIMPLE pngs.remove(i) do not work !?!?
         i = generator.nextInt(pngs.size());
         o3.setImageResource(pngs.get(i));
         d3.setImageResource(pngs.get(i));
@@ -404,18 +384,16 @@ public class game extends AppCompatActivity {
         o6.setImageResource(pngs.get(i));
         d6.setImageResource(pngs.get(i));
 
-
-
-        d1.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-        d2.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-        d3.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-        d4.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-        d5.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-        d6.setColorFilter(Color.argb(255,generator.nextInt(255),generator.nextInt(255),generator.nextInt(255)));
-
+        // set random color of target field
+        d1.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
+        d2.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
+        d3.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
+        d4.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
+        d5.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
+        d6.setColorFilter(Color.argb(255,generator.nextInt(200),generator.nextInt(200),generator.nextInt(200)));
     }
 
-
+// set back movable object to the origin place
     public void set_back_visability(String label, ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6) {
         if (label.equals("o1")) {
             o1.setVisibility(View.VISIBLE);
@@ -432,14 +410,12 @@ public class game extends AppCompatActivity {
         }
     }
 
-
+// check_win checks if all movable objects are gone
     public void check_win(ImageView o1, ImageView o2, ImageView o3, ImageView o4, ImageView o5, ImageView o6){
         if(o1.getVisibility() == View.GONE && o2.getVisibility() == View.GONE && o3.getVisibility() == View.GONE && o4.getVisibility() == View.GONE && o5.getVisibility() == View.GONE && o6.getVisibility() == View.GONE){
 
             end_level_popup();
             //play win sound
-
-
         }
     }
 
@@ -447,74 +423,71 @@ public class game extends AppCompatActivity {
     public void good_job(ImageView a, MediaPlayer sound){
         a.setColorFilter(0);
         score+=10;
-        points.setText(String.valueOf(score)+" PTS");
+        points.setText(String.valueOf(score)+ getText(R.string.pts));
         check_win(o1, o2, o3, o4, o5, o6);
         sound.start();
-
     }
+
+
     public void wrong_drop(MediaPlayer sound_DropWrong){
         life--;
         sound_DropWrong.start();
         set_life();
     }
 
+// popup window at the end of level or lives
     public void end_level_popup() {
-        final Intent rank = new Intent(this, RankingActivity.class);
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+        final Intent rank = new Intent(this, RankingActivity.class); // set intent to RankingActivity
+        AlertDialog.Builder adb = new AlertDialog.Builder(this); // Popup window builder
         if(life < 1){
+            // if you die
             adb.setTitle(R.string.game_over);
-            adb.setMessage(getText(R.string.great_score) + " " + String.valueOf(score) + " pts");
+            if(score > 0){
+                adb.setMessage(getText(R.string.score) + " " + String.valueOf(score) + " " + getText(R.string.pts) + "\n" + getText(R.string.great_score));
+                // set "save score" button
+                adb.setNegativeButton(R.string.save_score, new DialogInterface.OnClickListener(){
+                    public void onClick(DialogInterface dialog, int id){
+                        rank.putExtra("score", score); //add extras - score
+                        startActivity(rank);           //launch RankingActivity
+                    }
+                });
+            }else {
+                adb.setMessage(getText(R.string.score) + " " + String.valueOf(score) + " " + getText(R.string.pts) + "\n");
+            }
 
             adb.setPositiveButton(R.string.Try_again, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    goto_nextlevel(0, 5);
-
+                    goto_nextlevel(0, 5); // Restart with 0 pts and 5 lives
                 }
             });
-
-            adb.setNegativeButton(R.string.save_score, new DialogInterface.OnClickListener(){
-                public void onClick(DialogInterface dialog, int id){
-                    rank.putExtra("score", score);
-                    startActivity(rank);
-                }
-            });
-
         }
         else{
+            //when you win
             adb.setTitle(R.string.score);
-            adb.setMessage(score+" pts");
+            adb.setMessage(score+" pts\n" + getText(R.string.keepitup));
 
 
-
+            //set a "next level" button
             adb.setPositiveButton(R.string.nextlevel, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     goto_nextlevel(score, life);
-
-                    //### akcja  po przyciśnieciu przycisku 1 / przykład zmiana TextViev
-                    //tv.setText("You have clicked ok");
                 }
             });
-            // ########Przycisk Cancel #########
-            // adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener()
-            // {
-            //  public void onClick(DialogInterface dialog, int id)
-            // ###akcja  po przyciśnieciu przycisku 2 / przykład zmiana TextViev
-            //tv.setText("You have clicked Cancel");
-            //   dialog.cancel();
-            //}});
         }
 
-        adb.setIcon(R.drawable.koala);    // ikona popup
+        adb.setIcon(R.drawable.img81).show();    // popup window icon
         adb.show();
     }
 
+//Go to next level method
     public void goto_nextlevel(int score, int life){
-        Intent game = new Intent(this, game.class);
-        game.putExtra("score", score);
-        game.putExtra("life", life);
-        startActivity(game);
+        Intent game = new Intent(this, game.class); // set intent to game activity
+        game.putExtra("score", score); //add extras - score
+        game.putExtra("life", life); // life level
+        startActivity(game); // start
     }
 
+// Set life indicator and check if player dies
     public void set_life(){
 
         if(life < 5){
@@ -528,6 +501,7 @@ public class game extends AppCompatActivity {
         }
         if(life < 2){
             life2.setVisibility(View.INVISIBLE);
+
         }
         if(life < 1){
             life1.setVisibility(View.INVISIBLE);
@@ -535,5 +509,13 @@ public class game extends AppCompatActivity {
         }
     }
 
+    public List<Integer> make_list_of_images(){
+        List<Integer> img = new ArrayList<>();
 
+        for(int i=1; i<108; i++){
+            String png = "img"+String.valueOf(i);
+            img.add(getResources().getIdentifier(png,"drawable", getPackageName()));
+        }
+        return img;
+    }
 }
