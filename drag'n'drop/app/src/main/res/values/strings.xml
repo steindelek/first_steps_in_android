@@ -6,7 +6,7 @@
     <string name="help">HELP</string>
     <string name="youwin">You WIN!</string>
     <string name="close">CLOSE</string>
-    <string name="help_text">Drag funny animals into their right place.\n \n Good Luck! </string>
+    <string name="help_text">Drag funny animals into their right places.\n \n Good Luck! </string>
     <string name="help_title">One simple rule</string>
     <string name="score">You\'ve got</string>
     <string name="points">1000 pts</string>
@@ -23,4 +23,5 @@
     <string name="is_it_ok_to_erase">You are about to erase all Your data.\nAre You sure?</string>
     <string name="delete">Yes! Delete all</string>
     <string name="keep">No! Keep the data</string>
+    <string name="emptyname">Player Name can\'t be empty and needs to contain, at least one letter</string>
 </resources>

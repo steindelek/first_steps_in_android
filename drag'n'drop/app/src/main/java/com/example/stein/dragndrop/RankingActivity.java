@@ -15,11 +15,15 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 
 public class RankingActivity extends AppCompatActivity{
 
@@ -91,8 +95,12 @@ public class RankingActivity extends AppCompatActivity{
 
     public void save_score(View view){
         Ranking newposition = new Ranking(player_name.getText().toString(), score, img[avatar]);
-        dbhandler.add_players_score(newposition);
-        show_ranking();
+        if(check_player_name(newposition.get_player_name())){
+            dbhandler.add_players_score(newposition);
+            show_ranking();
+        }else{
+            Toast.makeText(this, R.string.emptyname,Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void show_ranking(){
@@ -120,7 +128,7 @@ public class RankingActivity extends AppCompatActivity{
 
 
     }
-
+// makes list of images - avatars
     public int[] make_list_of_images() {
         int[] img = new int[59];
         for (int i = 1; i < 60; i++) {
@@ -130,7 +138,14 @@ public class RankingActivity extends AppCompatActivity{
         return img;
     }
 
+    public boolean check_player_name(String name){
+        String pattern = "[a-zA-Z]+";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(name);
+        return m.find();
+    }
 
+//POPUP window
     public void popup() {
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle(R.string.warning);
