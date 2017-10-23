@@ -10,16 +10,17 @@
         android:layout_height="120dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="30dp"
         app:srcCompat="@drawable/ranking" />
 
     <Button
         android:id="@+id/button_save"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="130dp"
+        android:layout_height="50dp"
         android:onClick="save_score"
         android:text="@string/save_score"
+        android:textColor="#FFF"
         android:visibility="visible"
         android:layout_below="@+id/PlayerName"
         android:layout_centerHorizontal="true" />
@@ -40,19 +41,9 @@
         android:layout_toStartOf="@+id/refresh_button" />
 
     <ImageView
-        android:id="@+id/refresh_button"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_margin="5dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/refresh" />
-
-    <ImageView
         android:id="@+id/PlayerIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
         android:visibility="visible"
         app:srcCompat="@drawable/img62"
         android:layout_below="@+id/Logo"
@@ -65,7 +56,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical"
         android:headerDividersEnabled="false"
-        android:paddingTop="130dp"
+        android:paddingTop="100dp"
         android:textAlignment="gravity"
         android:visibility="invisible"
         android:layout_alignParentTop="true"
@@ -80,5 +71,15 @@
         android:layout_margin="5dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/bin" />
+
+    <ImageView
+        android:id="@+id/refresh_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/refresh" />
 
 </RelativeLayout>

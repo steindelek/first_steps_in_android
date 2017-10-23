@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">drag\'n\'drop</string>
+    <string name="app_name">fit\'em all</string>
     <string name="success">GREAT!</string>
     <string name="fail">WRONG!</string>
     <string name="start">NEW GAME</string>
@@ -23,5 +23,5 @@
     <string name="is_it_ok_to_erase">You are about to erase all Your data.\nAre You sure?</string>
     <string name="delete">Yes! Delete all</string>
     <string name="keep">No! Keep the data</string>
-    <string name="emptyname">Player Name can\'t be empty and needs to contain, at least one letter</string>
+    <string name="emptyname">Player Name needs to be one word only and can\'t be an email address</string>
 </resources>
