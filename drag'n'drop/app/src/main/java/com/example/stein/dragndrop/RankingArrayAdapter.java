@@ -1,4 +1,4 @@
-package pl.legalnyplener.fitemall;
+package com.example.stein.dragndrop;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

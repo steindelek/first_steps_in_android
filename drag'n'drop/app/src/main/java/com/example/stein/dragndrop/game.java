@@ -1,4 +1,4 @@
-package pl.legalnyplener.fitemall;
+package com.example.stein.dragndrop;
 
 import android.content.ClipData;
 import android.content.DialogInterface;
