@@ -1,4 +1,4 @@
-package com.example.stein.dragndrop;
+package pl.legalnyplener.fitemall;
 
 import android.content.ClipData;
 import android.content.DialogInterface;
@@ -6,14 +6,19 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -28,6 +33,7 @@ public class game extends AppCompatActivity {
     private List<Integer> list = new ArrayList<>();
     public Random generator = new Random();
     public int score, life;
+    private AdView adView;
 
 
     @Override
@@ -41,6 +47,15 @@ public class game extends AppCompatActivity {
 
         SurfaceView back = (SurfaceView)findViewById(R.id.surface);
         back.setBackgroundColor(Color.argb(255,generator.nextInt(80)+175,generator.nextInt(80)+175,generator.nextInt(80)+175));
+
+        //MobileAds.initialize(getApplicationContext(), "ca-app-pub-8532606852973121~2171064099"); // Prawdziwe
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713"); // testowe
+
+
+        adView = (AdView) findViewById(R.id.adView);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("33BE2250B43518CCDA7DE426D04EE232").build();
+        adView.loadAd(adRequest);
 
         life1 = (ImageView) findViewById(R.id.life1);
         life2 = (ImageView) findViewById(R.id.life2);
@@ -445,17 +460,18 @@ public class game extends AppCompatActivity {
             if(score > 0){
                 adb.setMessage(getText(R.string.score) + " " + String.valueOf(score) + " " + getText(R.string.pts) + "\n" + getText(R.string.great_score));
                 // set "save score" button
-                adb.setNegativeButton(R.string.save_score, new DialogInterface.OnClickListener(){
+                adb.setPositiveButton(R.string.save_score, new DialogInterface.OnClickListener(){
                     public void onClick(DialogInterface dialog, int id){
                         rank.putExtra("score", score); //add extras - score
                         startActivity(rank);           //launch RankingActivity
+                        finish();
                     }
                 });
             }else {
                 adb.setMessage(getText(R.string.score) + " " + String.valueOf(score) + " " + getText(R.string.pts) + "\n");
             }
 
-            adb.setPositiveButton(R.string.Try_again, new DialogInterface.OnClickListener() {
+            adb.setNegativeButton(R.string.Try_again, new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
                     goto_nextlevel(0, 5); // Restart with 0 pts and 5 lives
                 }
@@ -485,6 +501,7 @@ public class game extends AppCompatActivity {
         game.putExtra("score", score); //add extras - score
         game.putExtra("life", life); // life level
         startActivity(game); // start
+        finish();
     }
 
 // Set life indicator and check if player dies

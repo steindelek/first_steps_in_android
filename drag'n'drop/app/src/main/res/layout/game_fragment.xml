@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
     <SurfaceView
@@ -78,7 +77,6 @@
         android:layout_height="100dp"
         android:visibility="visible"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="20dp"
         android:layout_alignRight="@+id/centre"
         android:layout_marginRight="70dp" />
 
@@ -88,8 +86,7 @@
         android:layout_height="100dp"
         android:visibility="visible"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true" />
 
     <ImageView
         android:id="@+id/object9"
@@ -97,7 +94,6 @@
         android:layout_height="100dp"
         android:visibility="visible"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="20dp"
         android:layout_alignLeft="@+id/centre"
         android:layout_marginLeft="70dp" />
 
@@ -109,7 +105,7 @@
         android:layout_alignRight="@+id/centre"
         android:layout_marginRight="70dp"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="140dp"/>
+        android:layout_marginTop="120dp"/>
 
     <ImageView
         android:id="@+id/object11"
@@ -118,7 +114,7 @@
         android:visibility="visible"
         android:layout_centerHorizontal="true"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="140dp"/>
+        android:layout_marginTop="120dp"/>
 
     <ImageView
         android:id="@+id/object12"
@@ -127,7 +123,7 @@
         android:visibility="visible"
         android:layout_alignLeft="@+id/centre"
         android:layout_alignTop="@+id/centre"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="120dp"
         android:layout_marginLeft="70dp"/>
 
     <ImageView
@@ -196,5 +192,16 @@
         android:layout_toStartOf="@+id/life2"
         android:layout_marginTop="2dp"
         android:layout_marginRight="2dp"/>
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+    </com.google.android.gms.ads.AdView>
 
 </RelativeLayout>

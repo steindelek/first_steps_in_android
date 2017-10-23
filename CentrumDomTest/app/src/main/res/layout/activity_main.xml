@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#81BF20"
+    android:orientation="vertical"
+    tools:context="pl.legalnyplener.centrumdomtest.MainActivity">
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="pl.legalnyplener.centrumdomtest.TopSectionFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/top_section_fragment" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="#EEEEEE">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+
+            <ImageView
+                android:id="@+id/nowe"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@drawable/nowe" />
+
+            <TextView
+                android:id="@+id/text_nowe"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                android:layout_marginEnd="10dp"
+                android:text="Najnowsze Ogłoszenia" />
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/nowe_1"
+            android:name="pl.legalnyplener.centrumdomtest.OfferListElementFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            tools:layout="@layout/offer_list_element" />
+
+        <fragment
+            android:id="@+id/nowe_2"
+            android:name="pl.legalnyplener.centrumdomtest.OfferListElementFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            tools:layout="@layout/offer_list_element" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="#F96611"
+            android:text="Więcej"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:background="#2A3E50">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/promo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                app:srcCompat="@drawable/prom" />
+
+            <TextView
+                android:id="@+id/text_promo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:layout_marginEnd="10dp"
+                android:textSize="20sp"
+                android:textColor="#FFFFFF"
+                android:text="Okazyjne Ogłoszenia" />
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/promo_1"
+            android:name="pl.legalnyplener.centrumdomtest.OfferListElementFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            tools:layout="@layout/offer_list_element" />
+
+    </LinearLayout>
+
+</LinearLayout>

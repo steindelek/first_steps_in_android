@@ -1,4 +1,4 @@
-package com.example.stein.dragndrop;
+package pl.legalnyplener.fitemall;
 
 
 public class Ranking{

@@ -1,14 +1,8 @@
-package com.example.stein.dragndrop;
+package pl.legalnyplener.fitemall;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +12,6 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
-import java.util.List;
 
 class RankingArrayAdapter extends ArrayAdapter<Ranking>{
 
